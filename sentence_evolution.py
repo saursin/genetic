@@ -11,6 +11,9 @@ gene_set = string.ascii_letters+" "
 # max population per generation
 popmax = 2000
 
+# maximum number of generations to compute
+genmax = 10
+
 # Rate of mutation
 mutation_rate = 0.01
 
@@ -18,7 +21,7 @@ mutation_rate = 0.01
 population =  Population(Target, mutation_rate, popmax, gene_set, len(Target))
 
 best = "_"*len(Target)
-while not population.isFinished():    
+while population.generations<genmax and not population.isFinished():
     
     # calculate fitness of all candidates
     population.calcFitness()
@@ -36,4 +39,6 @@ while not population.isFinished():
     population.generate()
   
 
-print(">> Done! (in ", population.generations,"generations of a population of",len(population.population),"candidates with a mutation rate of",population.mutation_rate*100,"%)")
+print(">> Completed ", population.generations,"generations of a population of",len(population.population),"candidates with a mutation rate of",population.mutation_rate*100,"%")
+print(">> Best Candidate is \"" + best.getSignature() + "\" with a fitness of ", round(best.fitness, 4))
+
