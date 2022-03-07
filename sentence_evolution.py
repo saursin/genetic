@@ -12,7 +12,7 @@ gene_set = string.ascii_letters+" "
 popmax = 2000
 
 # maximum number of generations to compute
-genmax = 10
+genmax = 500
 
 # Rate of mutation
 mutation_rate = 0.01
